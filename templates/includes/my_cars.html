@@ -1,0 +1,26 @@
+ <div class="col-8 mx-auto mt-5">
+
+            {% for car in cars %}
+             
+            <div class="row p-2 bg-white border rounded">
+                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{car.car_photo.url}}"></div>
+                <div class="col-md-6 mt-1">
+                    <h5>{{car.title}}</h5>
+                  
+                    <div class="mt-1 mb-1 spec-1"><span>{{car.year}} <br></span><span class="dot"></span><span>{{car.bodystyle}}<br></span><span class="dot"></span><span>Another info <br></span></div>
+                    <div class="mt-1 mb-1 spec-1"><span>Lorem ipsum <br></span><span class="dot"></span><span> </span><span class="dot"></span></div>
+                    <p class="text-justify text-truncate para mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.<br><br></p>
+                </div>
+                <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                    <div class="d-flex flex-row align-items-center">
+                        <h4 class="mr-1">$99</h4><span class="strike-text">pirce/day</span>
+                    </div>
+                    <div class="d-flex flex-column mt-4"><a  href="{% url 'edit_car' car.id %}" class="btn btn-primary btn-sm" >Edit</a></div>
+                </div>
+            </div>
+            {% empty  %}
+               <div class="row p-2 bg-white border rounded">
+            <h2>You don't have any cars on rent.</h2>
+               </div>
+            {% endfor %}
+        </div>

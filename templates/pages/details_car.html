@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="car-details-page content-area-6 mt-4" >
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-12 col-xs-12">
+        <div class="car-details-section">
+          <!-- Heading start -->
+          <div class="heading-car clearfix">
+            <div class="pull-left">
+              <h3>{{car.title}}</h3>
+              <p class='date'> created: {{car.created_date |date:"M d, Y"}}</p>
+            </div>
+            <div class="pull-right">
+              <h3><span>{{car.price}}/day</span></h3>
+            </div>
+          </div>
+          <div
+            id="carDetailsSlider"
+            class="carousel car-details-sliders slide mb-40"
+          >
+            <!-- main slider carousel items -->
+            <div class="carousel-inner">
+              <div class="active item carousel-item" data-slide-number="0">
+                <img
+                  src="{{car.car_photo.url}}"
+                  class="img-fluid"
+                  alt="slider-car"
+                />
+              </div>
+              {% if car.car_photo_1 %}
+              <div class="item carousel-item" data-slide-number="1">
+                <img
+                  src="{{car.car_photo_1.url}}"
+                  class="img-fluid"
+                  alt="slider-car"
+                />
+              </div>
+              {% endif %} {% if car.car_photo_2 %}
+              <div class="item carousel-item" data-slide-number="2">
+                <img
+                  src="{{car.car_photo_2.url}}"
+                  class="img-fluid"
+                  alt="slider-car"
+                />
+              </div>
+              {% endif %} {% if car.car_photo_3 %}
+              <div class="item carousel-item" data-slide-number="4">
+                <img
+                  src="{{car.car_photo_3.url}}"
+                  class="img-fluid"
+                  alt="slider-car"
+                />
+              </div>
+              {% endif %} {% if car.car_photo_4 %}
+              <div class="item carousel-item" data-slide-number="5">
+                <img
+                  src="{{car.car_photo_4.url}}"
+                  class="img-fluid"
+                  alt="slider-car"
+                />
+              </div>
+              {% endif %}
+            </div>
+            <!-- main slider carousel nav controls -->
+            <div class="carousel-indicators-section clearfix">
+              <ul
+                class="carousel-indicators car-properties list-inline nav nav-justified"
+              >
+                <li class="list-inline-item active">
+                  <a
+                    id="carousel-selector-0"
+                    class="selected"
+                    data-slide-to="0"
+                    data-target="#carDetailsSlider"
+                  >
+                    <img
+                      src="{{car.car_photo.url}}"
+                      class="img-fluid"
+                      alt="small-car"
+                    />
+                  </a>
+                </li>
+                {% if car.car_photo_1 %}
+                <li class="list-inline-item">
+                  <a
+                    id="carousel-selector-1"
+                    data-slide-to="1"
+                    data-target="#carDetailsSlider"
+                  >
+                    <img
+                      src="{{car.car_photo_1.url}}"
+                      class="img-fluid"
+                      alt="small-car"
+                    />
+                  </a>
+                </li>
+                {% endif %} {% if car.car_photo_2 %}
+                <li class="list-inline-item">
+                  <a
+                    id="carousel-selector-2"
+                    data-slide-to="2"
+                    data-target="#carDetailsSlider"
+                  >
+                    <img
+                      src="{{car.car_photo_2.url}}"
+                      class="img-fluid"
+                      alt="small-car"
+                    />
+                  </a>
+                </li>
+                {% endif %} {% if car.car_photo_3 %}
+                <li class="list-inline-item">
+                  <a
+                    id="carousel-selector-3"
+                    data-slide-to="3"
+                    data-target="#carDetailsSlider"
+                  >
+                    <img
+                      src="{{car.car_photo_3.url}}"
+                      class="img-fluid"
+                      alt="small-car"
+                    />
+                  </a>
+                </li>
+                {% endif %} {% if car.car_photo_4 %}
+                <li class="list-inline-item">
+                  <a
+                    id="carousel-selector-4"
+                    data-slide-to="4"
+                    data-target="#carDetailsSlider"
+                  >
+                    <img
+                      src="{{car.car_photo_4.url}}"
+                      class="img-fluid"
+                      alt="small-car"
+                    />
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Tabbing box start -->
+          <div class="tabbing tabbing-box mb-40">
+            
+            <div class="tab-content" id="carTabContent">
+              <div
+                class="tab-pane fade active show"
+                id="one"
+                role="tabpanel"
+                aria-labelledby="one-tab"
+              >
+                <div class="car-description mb-50 mt-3">
+                  <h3 class="heading-2">Descriptison</h3>
+                 {{car.description}}
+                </div>
+              </div>
+           
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="col-lg-4 col-md-12 mt-5">
+        <div class="sidebar-right">
+         
+           
+            <h3 class="sidebar-title">Refine Your Search</h3>
+            <ul>
+              <li><span>Brand: </span>{{car.brand}}</li>
+              <li><span>Model: </span{{car.model}}</li>
+              <li><span>Year: </span> {{car.year}}</li>
+              <li><span>Body Style: </span>{{car.body_type}}</li>
+              <li><span>Gearbox: </span>{{car.gearbox}}</li>
+              <li><span>Milage: </span>{{car.mileage}}</li>
+            </ul>
+            <h3 class="sidebar-title">Contact with owners:</h3>
+            <span>Email:  {{car.user.email}}</span><br>
+            <span>Phone number: </span>
+            
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% block content %}
+<div class='add_form' >
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+
+  <div class="mb-3">
+    <label  class="form-label">Username</label>
+    <input type="text" class="form-control" name="username">
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" name="password">
+  </div>
+        <input type="submit" value="login">
+    <div class="extra-login clearfix">
+        <span>Or Login With</span>
+    </div>
+    <div class="clearfix"></div>
+    
+    </form>
+    <ul class="social-list">
+        <li>
+      <form action="{% provider_login_url 'facebook' method='oauth2' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit"<i class="fa fa-facebook facebook-i" ></i><span>Facebook</span></button>
+                </form>
+        <li>
+          <form action="{% provider_login_url 'google' %}" method="post">
+            {% csrf_token %}
+            <button type="submit"class="google-bg"><i class="fa fa-google google-i"></i>Google</button>
+          </form>
+        </li>
+    </ul>
+    <div class='or_register'>
+      <span>You do not have an account? <a href="{% url 'register_user' %}">Register!</a></span>
+    </div>
+</div>
+{% endblock %}

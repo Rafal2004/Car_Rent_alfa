@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+ {% load static %}
+  {% block content %}
+<section class="choose">
+  <div class="container-choose">
+    <div class="heading_container heading_center">
+      <h2>What do you want to do</h2>
+    </div>
+    <div class="row">
+      <div class="col w-100">
+        <div class="square1 mx-auto my-3">
+         
+         
+                  <p>
+            <a href="{% url 'add_car' %}"> Earn on your car </a>
+          </p>
+         
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col w-100">
+        <div class="square2 mx-auto my-3">
+          <div class='mx-auto my-3'>
+          <p>
+            <a href="{% url 'rent_car' %}">Rent a car</a>
+          </p>
+          <div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end client section -->
+<section class = "how_it_works">
+    <div class="heading_container heading_center w-100">
+      <h2>How it works?</h2>
+    </div>
+    <div class='row '>
+      <div class='col text-center mt-5 mx-auto'>
+          <h3>Do you have a vehicle and want to make money on it?</h3>
+          <p class='describe px-5 pt-2 '>You can list your unused car, motorcycle or bus.<br>Start making passive income on it by putting it up for rent! </p>
+         
+      </div>
+      <div class='col text-center mt-5 ' >
+         <h3>Want to rent a car cheaply, quickly and efficiently??</h3>
+         
+         <p class='describe px-5 pt-2 ' >Do you need a bus to transport something? Maybe your car has broken down and you want to find a temporary one<br> or make sure before you buy if it's the right model?<br>See what vehicles are on display and ready for rent!</p>
+               </div>
+   </div>
+    
+</section>
+
+{% if cars %}
+<section class="product_section layout_padding ">
+  <div class="container py-5">
+    <div class="row text-center text-white mb-5">
+      <div class="col-lg-7 mx-auto">
+        <div class="heading_container heading_center">
+          <h2>Last added:</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center row">
+      <div class="col-md-10">
+        {% for car in cars %}
+        <div class="row p-2 bg-white border rounded">
+          <div class="col-md-3 mt-1">
+            <img
+              class="img-fluid img-responsive rounded product-image"
+              src="{{car.car_photo.url}}"
+            />
+          </div>
+          <div class="col-md-6 mt-1">
+            <a class='title' href="{% url 'detail_car' car.id %}" alt="title"><h5>{{car.title}}</h5></a>
+
+            <div class="mt-5 mb-1 spec-1">
+              <span>Year: {{car.year}} <br /></span><span class="dot"></span
+              ><span>Mileage: {{car.mileage}}<br /></span><span class="dot"></span>
+            </div>
+            <div class="mt-1 mb-1 spec-1">
+            </div>
+           
+          </div>
+          <div
+            class="align-items-center align-content-center col-md-3 border-left mt-1"
+          >
+            <div class="d-flex flex-row align-items-center">
+              <h4 class="mr-1">{{car.price}} $</h4>
+              <span class="strike-text">/day</span>
+            </div>
+    
+            <div class="d-flex flex-column mt-4">
+              <a
+                href="{% url 'detail_car' car.id %}"
+                class="btn btn-primary btn-sm"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

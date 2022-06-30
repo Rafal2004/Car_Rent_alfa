@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-center row">
+    
+<div class='add_form' >
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.username.label}}
+        {{form.username}}
+        
+        {{form.first_name.label}}
+        {{form.first_name}} 
+      
+        {{form.last_name.label}}
+        {{form.last_name}} 
+      
+        {{form.email.label}}
+        {{form.email}} 
+              
+        <input type="submit" value="Edit">
+    </form>
+    <span>Do you want change your password ?</span><a href={% url 'change_password' %}>Click Here!</a>
+</div>
+</div>

@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{%block content%}      
+        
+            <div class="container">
+               <nav class="navbar navbar-expand-lg custom_nav-container ">
+
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav ">
+                        <li class="nav-item">
+                           <a class="nav-link" href="{% url 'my_account' 'my_cars' %}">My Cars <span class="sr-only">(current)</span></a>
+                        </li>
+
+                    <li class="nav-item">
+                           <a class="nav-link" href="{% url 'edit_account' %}">account settings</a>
+                        </li> 
+                        
+                     </ul>
+                  </div>
+               </nav>
+            </div>
+            {% if views == "my_cars" %}
+            {% include 'includes/my_cars.html'%}
+            {% endif %}
+            {% if views == "my_settings" %}
+            {% include 'includes/my_settings.html' %}
+            {% endif %}
+            {% if views == "change_password" %}
+            {% include 'includes/change_password.html' %}
+            {% endif %}
+    </div>
+</div>
+{% endblock %}
